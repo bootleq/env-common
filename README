@@ -1,0 +1,12 @@
+管理以下檔案（請留意所附 sh 文件中，以下檔案路徑是否有誤）
+
+  vim files   使用者的 Vim 插件、語法等檔案（見 rsync-include）
+              位置在 Vim 中 :echo $HOME 輸出的目錄之下
+  .vimrc      系統 vimrc，即 vim --version 顯示的 system vimrc file
+  .zshrc      系統 zshrc，即 which zsh 顯示路徑中的 .zshrc
+
+
+使用：
+
+  執行 update.sh      更新此路徑中的檔案。
+  執行 overwritte.sh  以此路徑檔案更新系統內的檔案（危險）。

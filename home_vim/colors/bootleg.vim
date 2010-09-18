@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer: bootleq <bootleq@gmail.com>
-" Last Change: 2010-08-22
-" Version: 0.1
+" Last Change: 2010-09-17
+" Version: 0.2
 "
 " Summary:
 " Modified from "slate" theme in 256 color term.
@@ -27,7 +27,7 @@ let colors_name = "bootleg"
   hi Visual       cterm=NONE           ctermbg=236       gui=NONE          guibg=#19194f
   hi VisualNOS    cterm=bold,underline
   hi LineNr       guifg=#afaf00        ctermfg=3
-  hi SignColumn   ctermbg=Black        ctermfg=178       guibg=#d7af00     guifg=Black
+  hi SignColumn   ctermbg=Black        ctermfg=178       guibg=Black       guifg=#d7af00
   hi WildMenu     ctermfg=0            ctermbg=3
   hi VertSplit    gui=reverse          cterm=reverse
   hi Folded       ctermfg=248          ctermbg=237       guifg=#cccccc     guibg=#444444

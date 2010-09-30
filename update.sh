@@ -6,3 +6,6 @@ rsync -av --include-from=rsync-include $HOME/.vim/ `pwd`/home_vim
 # SYSTEM .vimrc & .zshrc
 cp -v /usr/local/share/vim/vimrc `pwd`/system_rc/vimrc
 cp -v /etc/zshrc                 `pwd`/system_rc/zshrc
+
+# gVim .vimrc
+cp -v "/cygdrive/c/program files/vim/vimrc" `pwd`/gvim/vimrc

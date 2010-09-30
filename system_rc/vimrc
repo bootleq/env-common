@@ -21,7 +21,6 @@
 
 " }}}2    排版、縮排    {{{2
 
-  "set expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent smartindent smarttab
   set expandtab tabstop=2 softtabstop=2 shiftwidth=2 autoindent smartindent smarttab
   if &foldmethod == 'manual'
     set foldmethod=marker

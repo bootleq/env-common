@@ -15,6 +15,11 @@
 
 已知問題：
 
-  Vim plugin：gsession 與 ShowMarks 有按鍵衝突，建議於 .vimrc 設定
+  Vim plugin：gsession 與 ShowMarks 有按鍵衝突，
+  故於 .vimrc 設定 >
     let g:gsession_non_default_mapping = 1
-  取消 gsession 預設的 mapping。
+< 取消 gsession 預設的 mapping。
+
+
+Modelines: {{{1
+vim:tw=78:ft=help

@@ -118,6 +118,21 @@
 
 " }}}1   MAPPINGS              ==============================================
 
+" PLUGINS             {{{1 ===================================================
+
+" }}}2   GSession   {{{2
+
+  let g:gsession_non_default_mapping = 1
+  nnoremap <leader>ss    :GlobalSessionMake<CR>
+  nnoremap <leader>se    :GlobalSessionEliminateCurrent<CR>
+  nnoremap <leader>sn    :NamedSessionMake<CR>
+  nnoremap <leader>sl    :NamedSessionLoad<CR>
+"   nnoremap <leader>sm    :NamedSessionMenu<CR>
+
+" }}}2
+
+" }}}1    PLUGINS              ===============================================
+
 " Filetype 個別設定             {{{1 =========================================
 
 " }}}2   HTML   {{{2

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-files=('SYSTEM_VIMRC' 'SYSTEM_ZSHRC' 'GVIMRC')
+files=('SYSTEM_VIMRC' 'SYSTEM_ZSHRC' 'GVIMRC' 'GITCONFIG')
 checked=()
 
 if [[ -x ./paths.zsh ]]; then
@@ -34,7 +34,10 @@ done
 # USER-specific vim files (plugins, syntax, etc. See rsync-include)
 rsync -av --include-from=rsync-include $HOME/.vim/ `pwd`/home_vim
 
-# SYSTEM .vimrc & .zshrc
+# system git config
+[[ -n $GITCONFIG ]] && cp -v $GITCONFIG `pwd`/.gitconfig
+
+# system .vimrc & .zshrc
 [[ -n $SYSTEM_VIMRC ]] && cp -v $SYSTEM_VIMRC `pwd`/system_rc/vimrc
 [[ -n $SYSTEM_ZSHRC ]] && cp -v $SYSTEM_ZSHRC `pwd`/system_rc/zshrc
 

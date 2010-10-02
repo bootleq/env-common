@@ -4,6 +4,7 @@
               位置在 Vim 中 :echo $HOME 輸出的目錄之下
   vimrc       系統 vimrc，通常在 vim --version 顯示的 system vimrc file
   zshrc       系統 zshrc，通常在 /etc/zshrc
+  gitconfig   系統 git config
   (g)vimrc    另外安裝 gVim 的 vimrc
 
 

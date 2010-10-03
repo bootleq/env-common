@@ -32,7 +32,16 @@ for file in $checked; do
 done
 
 # USER-specific vim files (plugins, syntax, etc. See rsync-include)
-rsync -av --include-from=rsync-include $HOME/.vim/ `pwd`/home_vim
+if [[ -n $USER_VIM_DIR ]]; then
+  rsync -av --include-from=rsync-include $USER_VIM_DIR `pwd`/home_vim
+else
+  echo -n "Path undefined: USER_VIM_DIR. Skip and continue? (y/n) "
+  read sure
+  if [[ $sure != "y" ]]; then
+    echo "Aborded."
+    exit 1
+  fi
+fi
 
 # system git config
 [[ -n $GITCONFIG ]] && cp -v $GITCONFIG `pwd`/.gitconfig

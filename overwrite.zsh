@@ -1,5 +1,11 @@
 #!/bin/zsh
 
+echo -n "Deploy all files to working place? (y/n) "
+read sure
+if [[ $sure != "y" ]]; then
+  echo "Aborded."
+fi
+
 files=('SYSTEM_VIMRC' 'SYSTEM_ZSHRC' 'GVIMRC' 'GITCONFIG')
 checked=()
 
@@ -31,15 +37,19 @@ for file in $checked; do
   fi
 done
 
-echo -n "Deploy all files to working place? (y/n) "
-read sure
-if [[ $sure == "y" ]]; then
-  rsync -av `pwd`/home_vim/ $HOME/.vim
-  [[ -n $GITCONFIG ]]    && cp -v `pwd`/.gitconfig $GITCONFIG
 
-  [[ -n $SYSTEM_VIMRC ]] && cp -v     `pwd`/system_rc/vimrc $SYSTEM_VIMRC
-  [[ -n $SYSTEM_ZSHRC ]] && cp -v     `pwd`/system_rc/zshrc $SYSTEM_ZSHRC
-  [[ -n $GVIMRC ]]       && cp -v     `pwd`/gvim/vimrc "$GVIMRC"
+if [[ -n $USER_VIM_DIR ]]; then
+  rsync -av `pwd`/home_vim/ $USER_VIM_DIR
 else
-  echo "Aborded."
+  echo -n "Path undefined: USER_VIM_DIR. Skip and continue? (y/n) "
+  read sure
+  if [[ $sure != "y" ]]; then
+    echo "Aborded."
+    exit 1
+  fi
 fi
+
+[[ -n $GITCONFIG ]]    && cp -v     `pwd`/.gitconfig $GITCONFIG
+[[ -n $SYSTEM_VIMRC ]] && cp -v     `pwd`/system_rc/vimrc $SYSTEM_VIMRC
+[[ -n $SYSTEM_ZSHRC ]] && cp -v     `pwd`/system_rc/zshrc $SYSTEM_ZSHRC
+[[ -n $GVIMRC ]]       && cp -v     `pwd`/gvim/vimrc "$GVIMRC"

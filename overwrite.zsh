@@ -35,7 +35,7 @@ echo -n "Deploy all files to working place? (y/n) "
 read sure
 if [[ $sure == "y" ]]; then
   rsync -av `pwd`/home_vim/ $HOME/.vim
-  cp -v `pwd`/.gitconfig $GITCONFIG
+  [[ -n $GITCONFIG ]]    && cp -v `pwd`/.gitconfig $GITCONFIG
 
   [[ -n $SYSTEM_VIMRC ]] && cp -v     `pwd`/system_rc/vimrc $SYSTEM_VIMRC
   [[ -n $SYSTEM_ZSHRC ]] && cp -v     `pwd`/system_rc/zshrc $SYSTEM_ZSHRC

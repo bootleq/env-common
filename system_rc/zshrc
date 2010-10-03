@@ -31,10 +31,6 @@ unsetopt BG_NICE
 # Status display {{{
 
   # Prompts
-  #   function git_prompt_info() {
-  #     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  #     echo $'%{\e[32m%}(%{\e[0;32m%}'${ref#refs/heads/}$'%{\e[0;32m%})'
-  #   }
   if [[ $OSTYPE == 'cygwin' ]]; then
     PS1=$'\n'"%{$fg[green]%}%T@%m %{$fg[yellow]%}%~ %{$reset_color%}"$'\n$ '
   else
@@ -90,7 +86,6 @@ unsetopt BG_NICE
 # }}} Aliases
 
 # Bindkey {{{
-
 
   # sudo previous command (from grml.org)
   sudo-command-line() {

@@ -9,18 +9,37 @@ export OSTYPE=$OSTYPE
 # disable START/STOP output control (<C-S>, <C-Q>)
 stty -ixon
 
-# Cd
-# cdpath=(~ /home/www/webroot)
+# Cd path
+if [[ $OSTYPE == 'cygwin' ]]; then
+  cdpath=(~)
+else
+  cdpath=(~ /home/www)
+fi
 
 # WORDCHARS
 # default: *?_-[]~=/&;!#$%^(){}<>
 WORDCHARS='_'
 
+unsetopt BG_NICE
+
+# Autoload functions {{{
+
+  autoload -U colors && colors
+
+# }}} Autoload functions
+
 # Status display {{{
 
   # Prompts
-  autoload -U colors && colors
-  PS1=$'\n'"%{$fg[green]%}%T@%m %{$fg[yellow]%}%~ %{$reset_color%}"$'\n$ '
+  #   function git_prompt_info() {
+  #     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  #     echo $'%{\e[32m%}(%{\e[0;32m%}'${ref#refs/heads/}$'%{\e[0;32m%})'
+  #   }
+  if [[ $OSTYPE == 'cygwin' ]]; then
+    PS1=$'\n'"%{$fg[green]%}%T@%m %{$fg[yellow]%}%~ %{$reset_color%}"$'\n$ '
+  else
+    PS1=$'\n'"%{$fg[green]%}%T@%n %{$fg[yellow]%}%~ %{$reset_color%}"$'\n$ '
+  fi
 
   # Term title
   case $TERM in (*xterm*|*rxvt*|(dt|k|E)term)
@@ -47,14 +66,17 @@ WORDCHARS='_'
 
 # Colors {{{
 
+  # xterm-color
   if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'
   else
     export TERM='xterm-color'
   fi
 
-  # directory color
-  export LS_COLORS='di=33'
+  # see http://www.bigsoft.co.uk/blog/index.php/2008/04/11/configuring-ls_colors
+  # di : directory color
+  # ow : OTHER_WRITABLE directory
+  export LS_COLORS='di=33:ow=100;33'
 
 # }}} Colors
 
@@ -67,14 +89,22 @@ WORDCHARS='_'
 
 # Bindkey {{{
 
-  bindkey "OD" backward-word
-  bindkey "OC" forward-word
 
-  bindkey "^[[H" beginning-of-line
-  bindkey "^[[F" end-of-line
-  bindkey "^[[3~" delete-char
-  # bindkey "^[[5~" history-search-backward # PageUp
-  # bindkey "^[[6~" history-search-forward # PageDown
+  # sudo previous command (from grml.org)
+  sudo-command-line() {
+      [[ -z $BUFFER ]] && zle up-history
+      [[ $BUFFER != sudo\ * ]] && BUFFER="sudo $BUFFER"
+  }
+  zle -N sudo-command-line
+  bindkey "" sudo-command-line
+
+  bindkey "^[[H"     beginning-of-line
+  bindkey "^[[F"     end-of-line
+  bindkey "\\e[1;5D" backward-word
+  bindkey "\\e[1;5C" forward-word
+  bindkey "^[[3~"    delete-char
+  bindkey "^[[5~"    history-search-backward # PageUp
+  bindkey "^[[6~"    history-search-forward  # PageDown
   bindkey "^Z" undo
   bindkey '' redo
   bindkey "^Y" yank
@@ -84,6 +114,8 @@ WORDCHARS='_'
 
   bindkey "OH" beginning-of-line
   bindkey "OF" end-of-line
+  bindkey "OD" backward-word
+  bindkey "OC" forward-word
 
 # }}} Bindkey
 
@@ -121,8 +153,8 @@ WORDCHARS='_'
   zle -N user-complete
   bindkey "\t" user-complete
 
-  basehost="" 
-  hosts=($((( [ -r .ssh/known_hosts ] && awk '{print $1}' .ssh/known_hosts | tr , '\n');echo $basehost; ) | sort -u) )
+  basehost=""
+  hosts=($( (( [ -r .ssh/known_hosts ] && awk '{print $1}' .ssh/known_hosts | tr , '\n');echo $basehost; ) | sort -u) )
   zstyle ':completion:*' hosts $hosts
 
   zstyle ':completion:*:*:kill:*' menu yes select

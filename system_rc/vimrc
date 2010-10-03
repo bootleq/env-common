@@ -3,7 +3,7 @@
   set nocompatible
   let &termencoding = &encoding
   set encoding=utf-8
-  set fileencodings=usc-bom,taiwan,chinese,utf-8,utf-16le,default,latin1
+  set fileencodings=usc-bom,utf-8,taiwan,chinese,utf-16le,default,latin1
   filetype plugin indent on
 
 " }}}2    檔案格式    {{{2
@@ -53,7 +53,7 @@
   set showcmd
   set shortmess+=I
   set linebreak
-  set listchars=tab:>-,eol:$,trail:*
+  set listchars=tab:>-,eol:¬,trail:*
   set bg=dark
   set ambiwidth=double
   syntax on

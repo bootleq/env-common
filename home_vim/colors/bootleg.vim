@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer: bootleq <bootleq@gmail.com>
-" Last Change: 2010-09-17
-" Version: 0.2
+" Last Change: 2010-10-05
+" Version: 0.3
 "
 " Summary:
 " Modified from "slate" theme in 256 color term.
@@ -100,9 +100,9 @@ let colors_name = "bootleg"
 " }}} Pmenu
 
 " Diff {{{
-  hi DiffAdd    ctermbg=4  guibg=#0000ca
+  hi DiffAdd    ctermbg=19 guibg=#0000ca
   hi DiffChange ctermbg=53 guibg=#5f005f
-  hi DiffDelete cterm=bold ctermfg=4     ctermbg=6     gui=NONE guibg=#5fd7d7
+  hi DiffDelete cterm=bold ctermfg=19    ctermbg=80    gui=NONE guibg=#5fd7d7
   hi DiffText   cterm=bold ctermbg=88    guibg=#870000 gui=NONE
 " }}} Diff
 

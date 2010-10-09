@@ -3,13 +3,28 @@
   set nocompatible
   let &termencoding = &encoding
   set encoding=utf-8
-  set fileencodings=usc-bom,taiwan,chinese,utf-8,utf-16le,default,latin1
+"   set fileencodings=usc-bom,taiwan,chinese,utf-8,utf-16le,default,latin1
+  set fileencodings=usc-bom,utf-8,taiwan,chinese,default,latin1
   filetype plugin indent on
 
 " }}}2    檔案格式    {{{2
 
   set fileformats=unix
   set noendofline
+
+" }}}2   GUI    {{{2
+
+  if has("gui_running")
+    set guioptions=gri
+    let did_install_default_menus = 1
+    let did_install_syntax_menu = 1
+    let do_syntax_sel_menu = 1
+    let no_buffers_menu = 1
+    let bmenu_max_pathlen = 50
+    if has("gui_win32")
+      set winaltkeys=no
+    endif
+  endif
 
 " }}}2    term 相關調整     {{{2
 

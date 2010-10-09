@@ -30,14 +30,6 @@ else
   exit 1
 fi
 
-for file in $checked; do
-  if ! [[ -a ${(P)checked} ]]; then
-    echo "Can't find file: $checked. \nAborded."
-    exit 1
-  fi
-done
-
-
 if [[ -n $USER_VIM_DIR ]]; then
   rsync -av `pwd`/home_vim/ $USER_VIM_DIR
 else

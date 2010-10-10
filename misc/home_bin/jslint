@@ -1,0 +1,7 @@
+#!/bin/sh
+
+RHINO_JAR_FILE="$HOME/scripts/rhino.jar"
+RHINO_JAR_CLASS="org.mozilla.javascript.tools.shell.Main"
+JSLINT_JS_FILE="$HOME/scripts/jslint.js"
+
+java -cp $RHINO_JAR_FILE $RHINO_JAR_CLASS $JSLINT_JS_FILE $@

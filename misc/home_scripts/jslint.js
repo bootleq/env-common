@@ -1,0 +1,3 @@
+load("/home/bootleq/scripts/fulljslint.js");load("/home/bootleq/scripts/json2.js");
+(function(c){var a,b,d,e;if(!c[0]){print("Usage: jslint.js file.js");quit(1)}b=readFile(c[0]);if(!b){print("jslint: Couldn't open file '"+c[0]+"'.");quit(1)}d={};e={bitwise:true,eqeqeq:true,immed:true,newcap:true,nomen:true,onevar:true,plusplus:true,regexp:true,undef:true,white:true,browser:true,devel:true,indent:2,predef:["window"]};if(c[1])d=JSON.parse(c[1]);for(a in e)if(typeof d[a]==="undefined")d[a]=e[a];if(JSLINT(b,d))quit();else{for(b=0;b<JSLINT.errors.length;b+=1)if(a=JSLINT.errors[b])print([c[0],
+"|",a.line,"| ",a.reason,"\n ",a.evidence||"","\n ",Array(a.character).join(" ")+"^"].join(""));quit(2)}})(arguments);

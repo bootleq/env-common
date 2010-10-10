@@ -25,7 +25,7 @@
 < 取消 gsession 預設的 mapping。
 
 
-其他，不自動安裝的工具：
+其他，不自動安裝的工具或設定：
 
   home_bin
     ~/bin 內的檔案
@@ -33,6 +33,11 @@
 
   home_scripts
     ~/scripts 內的檔案
+
+  home_misc_ubuntu
+    其他 ~/ 目錄的檔案（ubuntu 用）
+    .devilspie/gvim.ds  開啟 gVim 時自動將視窗最大化（需安裝 devil's pie）
+    .local/share/applications/gvim.desktop  右鍵選單項目 gVim
 
   目前加入的工具：
 

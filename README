@@ -1,4 +1,4 @@
-管理以下檔案
+管理以下檔案：
 
   vim files   即使用者的 ~/.vim 目錄，位置如 Vim 中 :echo $HOME 的輸出。
               已安裝許多 Vim 插件、語法等檔案（見 rsync-include）
@@ -23,6 +23,28 @@
   故已於 .vimrc 設定 >
     let g:gsession_non_default_mapping = 1
 < 取消 gsession 預設的 mapping。
+
+
+其他，不自動安裝的工具：
+
+  home_bin
+    ~/bin 內的檔案
+    需要將 ~/bin 加進 $path
+
+  home_scripts
+    ~/scripts 內的檔案
+
+  目前加入的工具：
+
+    jslint
+      此為 JSLint rhino 的 wrapper script（需要 java）
+      修改自 http://www.jslint.com/rhino/
+      使用方式：
+        jslint file.js '{"option_key":value}'
+
+    closure-compiler
+      建議建立連結使用，例：
+        ln -s ~/scripts/compiler-20100917.jar ~/bin/closure-compiler.jar
 
 
 Modelines: {{{1

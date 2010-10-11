@@ -8,14 +8,15 @@ Copyright (c) 2002 Douglas Crockford  (www.JSLint.com) Rhino Edition
 
 // This is the Rhino companion to fulljslint.js.
 
-/*global JSLINT */
+/*global JSLINT, environment */
 /*jslint rhino: true, strict: false */
 
-load('/home/bootleq/scripts/fulljslint.js');
-load('/home/bootleq/scripts/json2.js');
+var home = environment['user.home'];
+load(home + '/scripts/fulljslint.js');
+load(home + '/scripts/json2.js');
 
 (function (a) {
-  var e, i, key, input, options, default_options;
+  var e, i, key, input, options, default_options, output;
 
   if (!a[0]) {
     print("Usage: jslint.js file.js");
@@ -63,11 +64,14 @@ load('/home/bootleq/scripts/json2.js');
       e = JSLINT.errors[i];
       if (e) {
         // Similar to format from closure-compiler, friendly to Vim's errorformat.
-        print([
-          a[0], '|', e.line, '| ', e.reason, '\n',
-          ' ', (e.evidence || ''), '\n',
-          ' ', (new Array(e.character).join(' ') + '^')
-        ].join(''));
+        output = [ a[0], '|', e.line, '| ', e.reason ];
+        if (e.evidence && e.evidence.replace(/\s/g, '') !== '') {
+          output.push(
+            '\n', e.evidence, '\n',
+            ' ', (new Array(e.character).join(' ') + '^')
+          );
+        }
+        print(output.join(''));
       }
     }
     quit(2);

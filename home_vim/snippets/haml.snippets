@@ -1,5 +1,3 @@
-snippet ld
-	logger.debug "${1}"
 snippet in
 	inspect
 # #!/usr/bin/ruby
@@ -320,7 +318,7 @@ snippet optp
 		opts.banner = "Usage: #{File.basename($PROGRAM_NAME)}
 snippet opt
 	opts.on( "-${1:o}", "--${2:long-option-name}", ${3:String},
-	         "${4:Option description.}") do |${5:opt}|
+					 "${4:Option description.}") do |${5:opt}|
 		${6}
 	end
 snippet tc

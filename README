@@ -1,7 +1,7 @@
 管理以下檔案：
 
   vim files   即使用者的 ~/.vim 目錄，位置如 Vim 中 :echo $HOME 的輸出。
-              已安裝許多 Vim 插件、語法等檔案（見 rsync-include）
+              已安裝許多 Vim 插件（2011-06-12 改由 vundle 管理）、語法等檔案（見 rsync-include）
   vimrc       系統 vimrc，通常在 vim --version 顯示的 system vimrc file
   zshrc       系統 zshrc，通常在 /etc/zshrc
   gitconfig   系統 git config
